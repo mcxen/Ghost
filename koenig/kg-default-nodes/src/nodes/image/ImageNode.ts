@@ -11,7 +11,10 @@ const imageProperties = {
     cardWidth: {default: 'regular' as CardWidth},
     width: {default: null as number | null},
     height: {default: null as number | null},
-    href: {default: '', urlType: 'url'}
+    href: {default: '', urlType: 'url'},
+    // BluePrint: free-form pixel width for the image, independent of the
+    // regular/wide/full cardWidth enum. null = use cardWidth layout.
+    displayWidth: {default: null as number | null}
 } satisfies DecoratorNodePropertyMap;
 
 export type ImageData = DecoratorNodeData<typeof imageProperties>;
@@ -24,7 +27,7 @@ export class ImageNode extends generateDecoratorNode({
     /* @override */
     exportJSON() {
         // checks if src is a data string
-        const {src, width, height, title, alt, caption, cardWidth, href} = this;
+        const {src, width, height, title, alt, caption, cardWidth, href, displayWidth} = this;
         const isBlob = src && src.startsWith('data:');
 
         const dataset = {
@@ -37,7 +40,8 @@ export class ImageNode extends generateDecoratorNode({
             alt,
             caption,
             cardWidth,
-            href
+            href,
+            displayWidth
         };
         return dataset;
     }

@@ -48,10 +48,18 @@ const KoenigComposableEditor = ({
     const {historyState} = useSharedHistoryContext();
     const [editor] = useLexicalComposerContext();
     const {isCollabActive} = useCollaborationContext();
-    const {editorContainerRef, darkMode, isTKEnabled} = React.useContext(KoenigComposerContext);
+    const composerContext = React.useContext(KoenigComposerContext);
+    const {editorContainerRef, darkMode, isTKEnabled} = composerContext;
 
     const isNested = !!editor._parentEditor;
     const isDragReorderEnabled = isDragEnabled && !readOnly && !isNested;
+
+    // BluePrint: expose readOnly to cards via context and tag the root element
+    // so a clean preview mode can be driven both from JS and CSS.
+    const contextValue = React.useMemo(() => ({
+        ...composerContext,
+        isReadOnly: readOnly
+    }), [composerContext, readOnly]);
 
     const {onChange: sharedOnChange} = useSharedOnChangeContext();
     const _onChange = React.useCallback((editorState) => {
@@ -88,9 +96,10 @@ const KoenigComposableEditor = ({
     };
 
     return (
+        <KoenigComposerContext.Provider value={contextValue}>
         <div
             ref={onWrapperRef}
-            className={`${useDefaultClasses ? 'koenig-lexical' : ''} ${inheritStyles ? 'kg-inherit-styles' : ''} ${darkMode ? 'dark' : ''} ${className}`}
+            className={`${useDefaultClasses ? 'koenig-lexical' : ''} ${inheritStyles ? 'kg-inherit-styles' : ''} ${darkMode ? 'dark' : ''} ${readOnly ? 'kg-preview-mode' : ''} ${className}`}
             data-koenig-dnd-disabled={!isDragEnabled}
             data-testid={dataTestId}
         >
@@ -119,6 +128,7 @@ const KoenigComposableEditor = ({
             {isTKEnabled && <TKPlugin />}
             {children}
         </div>
+        </KoenigComposerContext.Provider>
     );
 };
 

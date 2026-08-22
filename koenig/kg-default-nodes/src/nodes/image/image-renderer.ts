@@ -27,6 +27,7 @@ interface ImageNodeData {
     caption: string;
     cardWidth: CardWidth;
     href: string;
+    displayWidth?: number | null;
 }
 
 interface ImageRenderOptions extends ExportDOMOptions {
@@ -71,6 +72,11 @@ export function renderImageNode(node: ImageNodeData, options: ImageRenderOptions
     if (node.width && node.height) {
         img.setAttribute('width', String(node.width));
         img.setAttribute('height', String(node.height));
+    }
+
+    // BluePrint: free-form pixel width overrides the cardWidth layout sizing.
+    if (node.displayWidth) {
+        img.setAttribute('style', `width:${node.displayWidth}px;max-width:100%;height:auto`);
     }
 
     // images can be resized to max width, if that's the case output

@@ -99,6 +99,10 @@ export interface KoenigComposerContextType {
     editorContainerRef: React.MutableRefObject<HTMLElement | null>;
     cardConfig: CardConfig;
     darkMode: boolean;
+    // BluePrint: true when the editor is rendered read-only (e.g. share pages).
+    // Cards use it to hide edit affordances (toolbars, resize handles, add-row
+    // buttons) and render a clean preview. Root element also gets `kg-preview-mode`.
+    isReadOnly: boolean;
     enableMultiplayer: boolean;
     isTKEnabled?: boolean;
     multiplayerEndpoint?: string;
@@ -134,6 +138,7 @@ export const defaultKoenigComposerContext: KoenigComposerContextType = {
     editorContainerRef: {current: null},
     cardConfig: {},
     darkMode: false,
+    isReadOnly: false,
     enableMultiplayer: false,
     createWebsocketProvider() {
         throw new Error('KoenigComposerContext createWebsocketProvider was called outside KoenigComposer');

@@ -53,9 +53,11 @@ export default [
             'react-hooks/exhaustive-deps': 'error',
 
             // sort multiple import lines into alphabetical groups
-            'ghost/sort-imports-es6-autofix/sort-imports-es6': ['error', {
-                memberSyntaxSortOrder: ['none', 'all', 'single', 'multiple']
-            }],
+            // BluePrint fork: the sort-imports-es6-autofix plugin (0.6.0) uses
+            // sourceCode.getComments(), removed in ESLint 9, and crashes the
+            // autofix path. Disable here until the plugin is updated; falls
+            // back to manual import ordering in this package.
+            'ghost/sort-imports-es6-autofix/sort-imports-es6': 'off',
 
             // suppress errors for missing 'import React' in JSX files, as we don't need it
             'react/react-in-jsx-scope': 'off',

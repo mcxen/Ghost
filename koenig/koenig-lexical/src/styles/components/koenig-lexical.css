@@ -3,6 +3,55 @@
     --cta-link-color-text: var(--grey-900);
 }
 
+/* BluePrint: clean read-only preview mode for share pages. Hides every edit
+   affordance so cards render as content only, regardless of which card is
+   shown. Driven by the `readOnly` prop on KoenigEditor which adds this class
+   and sets isReadOnly in the composer context. */
+.koenig-lexical.kg-preview-mode [data-kg-card-toolbar],
+.koenig-lexical.kg-preview-mode [data-kg-toolbar],
+.koenig-lexical.kg-preview-mode [data-kg-card-editing-toggle],
+.koenig-lexical.kg-preview-mode .kg-card-toolbar,
+.koenig-lexical.kg-preview-mode .kg-image-resize-handle,
+.koenig-lexical.kg-preview-mode .kg-table-toolbar,
+.koenig-lexical.kg-preview-mode .kg-card-add-row,
+.koenig-lexical.kg-preview-mode .kg-card-add-column,
+.koenig-lexical.kg-preview-mode .kg-card-delete-control,
+.koenig-lexical.kg-preview-mode [data-kg-card-editing] {
+    display: none !important;
+}
+
+.koenig-lexical.kg-preview-mode [data-kg-card] {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* BluePrint: free-form image resize handle. Hidden in preview mode (above)
+   and when the image card is not selected. */
+.koenig-lexical .kg-image-resize-host {
+    position: relative;
+}
+
+.koenig-lexical .kg-image-resize-handle {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: var(--grey-900, #171717);
+    border: 2px solid #fff;
+    border-radius: 4px;
+    cursor: ew-resize;
+    z-index: 10;
+    opacity: 0.9;
+    touch-action: none;
+}
+
+.koenig-lexical .kg-image-resize-handle.is-resizing {
+    opacity: 1;
+}
+
+.koenig-lexical.is-image-resizing [data-kg-card] {
+    user-select: none;
+}
+
 /* Link color */
 .koenig-lexical .cta-link-color {
     color: var(--cta-link-color) !important;

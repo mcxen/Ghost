@@ -4,6 +4,7 @@ import EmEnDashPlugin from '../plugins/EmEnDashPlugin';
 import HorizontalRulePlugin from '../plugins/HorizontalRulePlugin';
 import HtmlPlugin from './HtmlPlugin';
 import ImagePlugin from '../plugins/ImagePlugin';
+import {ImageResizePlugin} from '../plugins/ImageResizePlugin';
 import KoenigSelectorPlugin from './KoenigSelectorPlugin.jsx';
 import MarkdownPlugin from '../plugins/MarkdownPlugin';
 import {AudioPlugin} from '../plugins/AudioPlugin';
@@ -23,6 +24,7 @@ import {ListPlugin} from '@lexical/react/LexicalListPlugin';
 import {PaywallPlugin} from '../plugins/PaywallPlugin';
 import {ProductPlugin} from '../plugins/ProductPlugin';
 import {SignupPlugin} from '../plugins/SignupPlugin';
+import {TablePlugin} from '../plugins/TablePlugin';
 import {TogglePlugin} from '../plugins/TogglePlugin';
 import {TransistorPlugin} from '../plugins/TransistorPlugin';
 import {VideoPlugin} from '../plugins/VideoPlugin';
@@ -44,6 +46,7 @@ export const AllDefaultPlugins = () => {
             {/* Card Plugins */}
             <AudioPlugin />
             <ImagePlugin />
+            <ImageResizePlugin /> {/* BluePrint: free-form image width via displayWidth */}
             <GalleryPlugin />
             <VideoPlugin />
             <MarkdownPlugin />
@@ -64,6 +67,7 @@ export const AllDefaultPlugins = () => {
             <SignupPlugin />
             <TransistorPlugin />
             <CallToActionPlugin />
+            <TablePlugin /> {/* BluePrint: simple editable table card */}
         </>
     );
 };

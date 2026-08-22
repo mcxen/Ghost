@@ -988,3 +988,48 @@
 .kg-header-accent, .kg-callout-accent {
     --kg-accent-color: #fff;
 }
+
+/* BluePrint: simple editable table card */
+.koenig-lexical .kg-table-card-wrapper {
+    margin: 1em 0;
+}
+
+.koenig-lexical .kg-table-card-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+.koenig-lexical .kg-table-card-wrapper td {
+    border: 1px solid var(--grey-300, #d4d4d4);
+    padding: 8px 12px;
+    vertical-align: top;
+    min-width: 60px;
+    outline: none;
+}
+
+.koenig-lexical .kg-table-card-wrapper td:focus {
+    background: var(--selection, #e6f1fe);
+}
+
+.koenig-lexical .kg-table-card-wrapper figcaption {
+    text-align: center;
+    color: var(--grey-500, #8f8f8f);
+    font-size: 0.85em;
+    margin-top: 6px;
+}
+
+.koenig-lexical .kg-table-toolbar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.koenig-lexical .kg-table-toolbar button {
+    border: 1px solid var(--grey-300, #d4d4d4);
+    background: #fff;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}

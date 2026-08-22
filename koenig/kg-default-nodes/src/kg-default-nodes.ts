@@ -56,6 +56,7 @@ export * from './nodes/email/EmailNode.js';
 export * from './nodes/gallery/GalleryNode.js';
 export * from './nodes/email-cta/EmailCtaNode.js';
 export * from './nodes/signup/SignupNode.js';
+export * from './nodes/table/TableNode.js';
 export * from './nodes/transistor/TransistorNode.js';
 export * from './nodes/call-to-action/CallToActionNode.js';
 export * from './nodes/ExtendedTextNode.js';
