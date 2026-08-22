@@ -1,6 +1,9 @@
 {
-  "name": "@tryghost/koenig-lexical",
-  "version": "1.9.2",
+  "name": "@mcxen/koenig-lexical",
+  "version": "1.9.2-mcxen.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Ghost's Lexical-based rich text post editor",
   "repository": {
     "type": "git",
