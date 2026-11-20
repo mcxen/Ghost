@@ -1,6 +1,6 @@
 {
     "name": "@mcxen/koenig-lexical",
-    "version": "1.9.2-mcxen.2",
+    "version": "1.9.2-mcxen.3",
     "publishConfig": {
         "access": "public"
     },
